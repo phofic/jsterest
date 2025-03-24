@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "builds": [
+    // Backend (Node.js API)
+    {
+      "src": "backend/index.js",
+      "use": "@vercel/node"
+    },
+    // Frontend (Vite/React)
+    {
+      "src": "client/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"  // Must match Vite's build output
+      }
+    }
+  ],
+  "routes": [
+    // API routes → Backend
+    {
+      "src": "/api/(.*)",
+      "dest": "backend/index.js"
+    },
+    // All other routes → Frontend
+    {
+      "src": "/(.*)",
+      "dest": "client/dist/$1"
+    }
+  ]
+}
