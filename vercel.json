@@ -2,21 +2,18 @@
   "version": 2,
   "builds": [
     {
-      "src": "backend/index.js",
-      "use": "@vercel/node"
-    },
-    {
       "src": "client/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist"
+        "distDir": "dist",
+        "cleanUrls": true  // Optional: Removes .html from URLs
       }
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "backend/index.js"
+      "dest": "backend/index.js"  // Only if you have a backend
     },
     {
       "src": "/(.*)",
@@ -24,6 +21,12 @@
       "headers": {
         "Cache-Control": "s-maxage=86400"
       }
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/client/dist/index.html"  // Fallback for client-side routing
     }
   ]
 }
