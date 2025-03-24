@@ -9,27 +9,24 @@
       }
     }
   ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
   "routes": [
     {
       "src": "/assets/(.*)",
-      "dest": "client/dist/assets/$1"
+      "dest": "/assets/$1"
     },
     {
       "src": "/general/(.*)",
-      "dest": "client/dist/general/$1"
+      "dest": "/general/$1"
     },
     {
       "src": "/pins/(.*)",
-      "dest": "client/dist/pins/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "client/dist/$1"
-    },
-    {
-      "src": "/.*",
-      "status": 200,
-      "dest": "client/dist/index.html"
+      "dest": "/pins/$1"
     }
   ]
 }
