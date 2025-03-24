@@ -2,10 +2,6 @@
   "version": 2,
   "builds": [
     {
-      "src": "backend/index.js",
-      "use": "@vercel/node"
-    },
-    {
       "src": "client/package.json",
       "use": "@vercel/static-build",
       "config": {
@@ -16,11 +12,20 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "backend/index.js"
+      "dest": "backend/index.js"  // Only if you have a backend API
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "client/dist/assets/$1"
     },
     {
       "src": "/(.*)",
       "dest": "client/dist/$1"
+    },
+    {
+      "src": "/(.*)",
+      "status": 200,
+      "dest": "client/dist/index.html"  // Fallback for SPA routing
     }
   ]
 }
