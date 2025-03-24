@@ -12,7 +12,7 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "backend/index.js"  // Only if you have a backend API
+      "dest": "backend/index.js"
     },
     {
       "src": "/assets/(.*)",
@@ -25,7 +25,7 @@
     {
       "src": "/(.*)",
       "status": 200,
-      "dest": "client/dist/index.html"  // Fallback for SPA routing
+      "dest": "client/dist/index.html"
     }
   ]
 }
