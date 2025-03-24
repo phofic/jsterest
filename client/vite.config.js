@@ -1,3 +1,4 @@
+// client/vite.config.js
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
@@ -5,9 +6,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: 'dist',
+    emptyOutDir: true,  // Clears previous builds
   },
-  server: {
-    historyApiFallback: true,  // Critical for client-side routing
-  },
-  base: '/',  // Ensure assets load from root
+  base: '/',  // Critical for correct asset paths
 });
